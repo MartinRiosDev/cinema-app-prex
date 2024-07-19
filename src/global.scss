@@ -35,3 +35,23 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+html {
+	--ion-dynamic-font: var(--ion-default-dynamic-font);
+	--ion-font-family: "Montserrat";
+	font-optical-sizing: auto;
+	font-weight: 500;
+	font-style: normal;
+}
+
+ion-button {
+	text-transform: none;
+	--color: #fefefe;
+}
+
+ion-content {
+	--padding-top: 16px;
+	--padding-bottom: 16px;
+	--padding-start: 32px;
+	--padding-end: 32px;
+}

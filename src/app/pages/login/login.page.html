@@ -1,0 +1,23 @@
+<ion-content [fullscreen]="true">
+	<div class="main-container">
+		<div class="login">
+			<div class="logo mb-8">
+				Logo
+			</div>
+
+			<ion-input fill="outline" placeholder="Username" shape="round" class="mb-4" autocomplete="new-text" mode="md" />
+
+			<ion-input fill="outline" placeholder="Password" shape="round" [type]="passwordIsVisible ? 'text' : 'password'"
+				autocomplete="new-password" mode="md">
+				<ion-button fill="clear" slot="end" (click)="changePasswordVisibility()">
+					<ion-icon slot="icon-only" [name]="passwordIsVisible ? 'eye-off' : 'eye'"></ion-icon>
+				</ion-button>
+			</ion-input>
+
+			<ion-button class="login-button" shape="round" color="primary">Login</ion-button>
+			<ion-button fill="clear">Create account</ion-button>
+		</div>
+
+		<ion-button fill="clear">Forgot password?</ion-button>
+	</div>
+</ion-content>

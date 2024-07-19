@@ -1,0 +1,23 @@
+// Extends
+%flexColumn {
+	display: flex;
+	flex-direction: column;
+}
+
+%flexCenter {
+	display: flex;
+	align-items: center;
+}
+
+%flexFullCenter {
+	display: flex !important;
+	align-items: center;
+	justify-content: center;
+}
+
+%flexColumnFullCenter {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}

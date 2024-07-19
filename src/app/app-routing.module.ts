@@ -5,12 +5,16 @@ import { NgModule } from '@angular/core';
 const routes: Routes = [
 	{
 		path: '',
-		redirectTo: 'dashboard',
+		redirectTo: 'login',
 		pathMatch: 'full'
 	},
 	{
 		path: 'dashboard',
 		loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
+	},
+	{
+		path: 'login',
+		loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
 	}
 ];
 

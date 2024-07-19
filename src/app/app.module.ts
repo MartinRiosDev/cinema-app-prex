@@ -18,7 +18,11 @@ import { withNgxsResetPlugin } from 'ngxs-reset-plugin';
 	],
 	imports: [
 		BrowserModule,
-		IonicModule.forRoot(),
+		IonicModule.forRoot({
+			scrollPadding: false,
+			scrollAssist: false,
+			mode: 'ios'
+		}),
 		AppRoutingModule,
 		NgxsModule.forRoot([AppState], {
 			developmentMode: !environment.production
