@@ -1,23 +1,28 @@
 <ion-content [fullscreen]="true">
 	<div class="main-container">
-		<div class="login">
+		<form class="login" [formGroup]="form">
 			<div class="logo mb-8">
 				Logo
 			</div>
 
-			<ion-input fill="outline" placeholder="Username" shape="round" class="mb-4" autocomplete="new-text" mode="md" />
+			<ion-input fill="outline" placeholder="Username" shape="round" class="mb-4" autocomplete="new-text" mode="md"
+				errorText="Username is required" formControlName="username" />
 
 			<ion-input fill="outline" placeholder="Password" shape="round" [type]="passwordIsVisible ? 'text' : 'password'"
-				autocomplete="new-password" mode="md">
+				autocomplete="new-password" mode="md" formControlName="password" errorText="Password is required">
 				<ion-button fill="clear" slot="end" (click)="changePasswordVisibility()">
 					<ion-icon slot="icon-only" [name]="passwordIsVisible ? 'eye-off' : 'eye'"></ion-icon>
 				</ion-button>
 			</ion-input>
 
-			<ion-button class="login-button" shape="round" color="primary">Login</ion-button>
-			<ion-button fill="clear">Create account</ion-button>
-		</div>
+			<ion-button id="open-loading" class="login-button" shape="round" color="primary" [disabled]="form.disabled"
+				(click)="submit()">
+				Login
+			</ion-button>
 
-		<ion-button fill="clear">Forgot password?</ion-button>
+			<ion-button fill="clear" [disabled]="form.disabled">Create account</ion-button>
+		</form>
+
+		<ion-button fill="clear" [disabled]="form.disabled">Forgot password?</ion-button>
 	</div>
 </ion-content>
