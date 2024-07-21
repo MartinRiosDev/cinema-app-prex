@@ -5,7 +5,4 @@ import { Component } from '@angular/core';
 	templateUrl: './dashboard.page.html',
 	styleUrls: ['./dashboard.page.scss'],
 })
-export class DashboardPage {
-
-	constructor() { }
-}
+export class DashboardPage { }
