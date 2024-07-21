@@ -1,7 +1,7 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { Login, RateMovie } from './app.actions';
 
 import { Injectable } from '@angular/core';
-import { Login } from './app.actions';
 import { Movie } from '../shared/models/movie.model';
 import { UserInformation } from '../pages/login/models/login-information.model';
 import { defaultMovies } from '../shared/constants';
@@ -37,6 +37,26 @@ export class AppState {
 	storeUser(context: StateContext<AppStateModel>, action: Login): void {
 		context.patchState({
 			user: action.userInformation
+		});
+	}
+
+	@Action(RateMovie)
+	rateMovie(context: StateContext<AppStateModel>, action: RateMovie): void {
+		const movies = context.getState().movies;
+
+		const updatedMovies = movies.map((movie) => {
+			if (movie.id === action.selectedMovie.id) {
+				return {
+					...movie,
+					rate: action.newRate
+				};
+			}
+
+			return movie;
+		});
+
+		context.patchState({
+			movies: updatedMovies
 		});
 	}
 }

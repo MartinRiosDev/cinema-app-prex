@@ -1,4 +1,4 @@
-<ion-item-sliding *ngFor="let movie of (movies$ | async)" class="mb-20">
+<ion-item-sliding *ngFor="let movie of movies" class="mb-20">
 	<ion-item class="movie-card">
 		<img [src]="movie.image" alt="movie-image">
 
@@ -13,7 +13,8 @@
 				<span>Rate</span>
 
 				<div class="stars">
-					<ion-icon name="star" *ngFor="let rate of [1,2,3,4,5]" [ngStyle]="{'color': getColor(rate, movie.rate)}" />
+					<ion-icon name="star" *ngFor="let rate of [1,2,3,4,5]; let i = index"
+						[ngStyle]="{'color': getColor(rate, movie.rate)}" (click)="rateMovie(i, movie)" />
 				</div>
 			</div>
 		</div>

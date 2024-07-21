@@ -1,23 +1,23 @@
 <ion-header [translucent]="true">
 	<ion-toolbar mode="md">
 		<ion-buttons slot="start">
-			<ion-menu-button></ion-menu-button>
+			<ion-menu-button />
 		</ion-buttons>
 
 		<ion-title>Movies</ion-title>
 	</ion-toolbar>
 
-	<ion-searchbar placeholder="Search"></ion-searchbar>
+	<ion-searchbar placeholder="Search" (ionInput)="filterMovies($event)" />
 </ion-header>
 
 <ion-content [fullscreen]="true">
 	<div class="main-container">
-		<app-movie-card></app-movie-card>
+		<app-movie-card [movies]="movies" />
 	</div>
 
 	<ion-fab slot="fixed" vertical="bottom" horizontal="end">
 		<ion-fab-button>
-			<ion-icon name="add"></ion-icon>
+			<ion-icon name="add" />
 		</ion-fab-button>
 	</ion-fab>
 </ion-content>
