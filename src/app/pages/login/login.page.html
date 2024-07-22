@@ -1,28 +1,44 @@
 <ion-content [fullscreen]="true">
 	<div class="main-container">
 		<form class="login" [formGroup]="form">
-			<div class="logo mb-8">
-				Logo
-			</div>
+			<img class="logo mb-8" src="../../../assets/img/cinema-logo.png" alt="logo">
 
 			<ion-input fill="outline" placeholder="Username" shape="round" class="mb-4" autocomplete="new-text" mode="md"
 				errorText="Username is required" formControlName="username" />
 
-			<ion-input fill="outline" placeholder="Password" shape="round" [type]="passwordIsVisible ? 'text' : 'password'"
-				autocomplete="new-password" mode="md" formControlName="password" errorText="Password is required">
-				<ion-button fill="clear" slot="end" (click)="changePasswordVisibility()">
-					<ion-icon slot="icon-only" [name]="passwordIsVisible ? 'eye-off' : 'eye'"></ion-icon>
-				</ion-button>
+			<ion-input fill="outline" placeholder="Password" shape="round" type="password" autocomplete="new-password"
+				mode="md" formControlName="password" errorText="Password is required">
+				<ion-input-password-toggle slot="end" color="light"></ion-input-password-toggle>
 			</ion-input>
 
-			<ion-button id="open-loading" class="login-button" shape="round" color="primary" [disabled]="form.disabled"
-				(click)="submit()">
+			<ion-button class="login-button" shape="round" color="primary" [disabled]="form.disabled" (click)="submit()">
 				Login
 			</ion-button>
 
-			<ion-button fill="clear" [disabled]="form.disabled">Create account</ion-button>
+			<ion-button fill="clear" [disabled]="form.disabled" routerLink="/create-account">Create account</ion-button>
 		</form>
 
-		<ion-button fill="clear" [disabled]="form.disabled">Forgot password?</ion-button>
+		<ion-button fill="clear" id="open-modal" [disabled]="form.disabled">Forgot password?</ion-button>
 	</div>
+
+	<ion-modal #modal trigger="open-modal" id="forgot-password-modal" [backdropDismiss]="false">
+		<ng-template>
+			<div class="wrapper">
+				<h1 class="title">Recover your password</h1>
+
+				<ion-input fill="outline" placeholder="Username" shape="round" autocomplete="new-text" mode="md" type="text"
+					ngModel required errorText="Username is required" />
+
+				<div class="modal-buttons">
+					<ion-button shape="round" [strong]="true" color="danger" fill="clear" (click)="modal.dismiss()">
+						Close
+					</ion-button>
+
+					<ion-button shape="round" color="primary" fill="solid" (click)="recoverPassword()">
+						Submit
+					</ion-button>
+				</div>
+			</div>
+		</ng-template>
+	</ion-modal>
 </ion-content>

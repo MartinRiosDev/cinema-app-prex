@@ -1,0 +1,39 @@
+<ion-content [fullscreen]="true">
+	<div class="create-account">
+		<ion-header collapse="condense" class="header">
+			<ion-toolbar>
+				<img class="logo mb-8" src="../../../assets/img/cinema-logo.png" alt="logo">
+			</ion-toolbar>
+		</ion-header>
+
+		<form class="form" [formGroup]="form">
+			<ion-input fill="outline" placeholder="E.g: TheDarkKnight_24" shape="round" autocomplete="new-text" mode="md"
+				errorText="Username is required" formControlName="username" label="Username" labelPlacement="stacked" />
+
+			<ion-input fill="outline" placeholder="E.g: user@example.com" shape="round" autocomplete="new-text" mode="md"
+				[errorText]="emailErrorText" type="email" formControlName="email" label="Email" labelPlacement="stacked" />
+
+			<ion-input fill="outline" placeholder="********" shape="round" autocomplete="new-password" mode="md"
+				errorText="Password is required" formControlName="password" type="password" label="Password"
+				labelPlacement="stacked">
+				<ion-input-password-toggle slot="end" color="light"></ion-input-password-toggle>
+			</ion-input>
+
+			<ion-input fill="outline" placeholder="********" shape="round" autocomplete="new-password" mode="md"
+				errorText="Password confirmation is required" type="password" formControlName="confirmPassword"
+				label="Confirm Password" labelPlacement="stacked">
+				<ion-input-password-toggle slot="end" color="light"></ion-input-password-toggle>
+			</ion-input>
+
+			<div class="buttons-container">
+				<ion-button shape="round" color="primary" (click)="submit()">
+					Create Account
+				</ion-button>
+
+				<ion-button shape="round" fill="clear" routerLink="/login">
+					Return to Login
+				</ion-button>
+			</div>
+		</form>
+	</div>
+</ion-content>

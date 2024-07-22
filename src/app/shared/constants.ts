@@ -42,3 +42,7 @@ export const defaultMovies: Movie[] = [
 		date: '27/07/2010'
 	}
 ];
+
+export const regEx = {
+	email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:\s*)$/
+};

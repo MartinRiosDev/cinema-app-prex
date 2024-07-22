@@ -1,0 +1,28 @@
+.create-account {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	.header {
+		margin-bottom: 40px;
+		text-align: center;
+	}
+
+	.form {
+		ion-input {
+			margin-bottom: 24px;
+		}
+
+		.buttons-container {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+}
+
+.logo {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+}

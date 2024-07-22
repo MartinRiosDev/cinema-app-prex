@@ -1,0 +1,17 @@
+ion-toast {
+	--box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+	--color: #fefefe;
+	font-size: 16px;
+}
+
+ion-toast::part(button) {
+	color: #fefefe;
+}
+
+ion-toast.success-toast {
+	--background: #55a630;
+}
+
+ion-toast.error-toast {
+	--background: #a4161a;
+}

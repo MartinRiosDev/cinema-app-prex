@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
+import { IonModal } from '@ionic/angular';
 import { LoadingService } from 'src/app/shared/services/loading.service';
 import { Login } from 'src/app/store/app.actions';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
+import { ToastService } from 'src/app/shared/services/toast.service';
 import { finalize } from 'rxjs';
 
 @Component({
@@ -14,19 +16,17 @@ import { finalize } from 'rxjs';
 })
 export class LoginPage implements OnInit {
 
+	@ViewChild(IonModal) modal: IonModal;
+
 	form: UntypedFormGroup;
-	passwordIsVisible: boolean = false;
 
 	constructor(
 		private fb: UntypedFormBuilder,
 		private store: Store,
 		private router: Router,
-		private loadingService: LoadingService
+		private loadingService: LoadingService,
+		private toastService: ToastService
 	) { }
-
-	changePasswordVisibility(): void {
-		this.passwordIsVisible = !this.passwordIsVisible;
-	}
 
 	ngOnInit(): void {
 		this.initForm();
@@ -61,6 +61,16 @@ export class LoginPage implements OnInit {
 						this.router.navigate(['/dashboard']);
 					}
 				});
+		}, 3000);
+	}
+
+	recoverPassword(): void {
+		this.loadingService.showLoading('Recovering your password...');
+
+		setTimeout(() => {
+			this.loadingService.hideLoading();
+			this.modal.dismiss();
+			this.toastService.showToast('Done! Please check your mailbox.', 'success-toast');
 		}, 3000);
 	}
 

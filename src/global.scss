@@ -36,6 +36,10 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
 
+/* Custom classes */
+@import "./app/scss/toast.scss";
+@import "./app/scss/forgot-password-modal.scss";
+
 html {
 	--ion-dynamic-font: var(--ion-default-dynamic-font);
 	--ion-font-family: "Montserrat";
@@ -64,13 +68,6 @@ textarea {
 	--padding-bottom: 18px !important;
 }
 
-ion-toast.success-toast {
-	--background: #55a630;
-	--box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
-	--color: #000000;
+.error-text {
 	font-size: 16px;
-}
-
-ion-toast::part(button) {
-	color: #fefefe;
 }

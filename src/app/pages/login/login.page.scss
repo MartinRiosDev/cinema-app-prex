@@ -22,9 +22,6 @@
 			width: 150px;
 			height: 150px;
 			border-radius: 50%;
-			background-color: #fefefe;
-			@extend %flexColumnFullCenter;
-			color: black;
 		}
 
 		.login-button {
@@ -33,4 +30,10 @@
 			width: 100%;
 		}
 	}
+}
+
+.modal-buttons {
+	display: flex;
+	justify-content: end;
+	margin-top: 24px;
 }
