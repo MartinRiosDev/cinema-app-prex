@@ -57,5 +57,20 @@ ion-content {
 }
 
 ion-fab {
-  margin-bottom: var(--ion-safe-area-bottom, 0);
+	margin-bottom: var(--ion-safe-area-bottom, 0);
+}
+
+textarea {
+	--padding-bottom: 18px !important;
+}
+
+ion-toast.success-toast {
+	--background: #55a630;
+	--box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+	--color: #000000;
+	font-size: 16px;
+}
+
+ion-toast::part(button) {
+	color: #fefefe;
 }

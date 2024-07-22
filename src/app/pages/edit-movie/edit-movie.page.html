@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+	<ion-toolbar mode="md" class="buttons-toolbar">
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+
+		<ion-buttons slot="end">
+			<ion-button fill="solid" color="primary" class="save-button" (click)="updateMovie()">
+				Save
+			</ion-button>
+		</ion-buttons>
+
+		<ion-title>Back Button</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+	<ion-header collapse="condense">
+		<ion-toolbar>
+			<span class="title">{{ selectedMovie.title }}</span>
+			<img [src]="selectedMovie.image" alt="movie-image">
+		</ion-toolbar>
+	</ion-header>
+
+	<div class="other-information">
+		<div class="rate">
+			<span>Rate</span>
+
+			<div class="stars">
+				<ion-icon name="star" *ngFor="let rate of [1,2,3,4,5]; let i = index"
+					[ngStyle]="{'color': getColor(rate, selectedMovie.rate)}" (click)="rateMovie(rate)" />
+			</div>
+		</div>
+
+
+		<span>{{ selectedMovie.date }}</span>
+	</div>
+
+	<ion-textarea mode="md" fill="outline" class="description" [autoGrow]="true" [(ngModel)]="movieDescription"
+		[required]="true" errorText="Description is required" />
+</ion-content>

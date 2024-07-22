@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
-import { LoadingController } from '@ionic/angular';
+import { LoadingService } from 'src/app/shared/services/loading.service';
 import { Login } from 'src/app/store/app.actions';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
 		private fb: UntypedFormBuilder,
 		private store: Store,
 		private router: Router,
-		private loadingController: LoadingController
+		private loadingService: LoadingService
 	) { }
 
 	changePasswordVisibility(): void {
@@ -30,14 +30,6 @@ export class LoginPage implements OnInit {
 
 	ngOnInit(): void {
 		this.initForm();
-	}
-
-	async showLoading() {
-		const loading = await this.loadingController.create({
-			message: 'Logging in...'
-		});
-
-		loading.present();
 	}
 
 	initForm(): void {
@@ -54,7 +46,7 @@ export class LoginPage implements OnInit {
 		}
 
 		this.form.disable();
-		this.showLoading();
+		this.loadingService.showLoading('Loggin in...');
 
 		/**
 		 * I use this setTimeout to simulate the response time of a call to the backend.
@@ -65,7 +57,7 @@ export class LoginPage implements OnInit {
 				.pipe(finalize(() => this.form.enable()))
 				.subscribe({
 					next: () => {
-						this.loadingController.dismiss();
+						this.loadingService.hideLoading();
 						this.router.navigate(['/dashboard']);
 					}
 				});

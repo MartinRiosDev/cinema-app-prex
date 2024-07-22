@@ -4,4 +4,5 @@ export interface Movie {
 	description: string;
 	rate: number;
 	image: string;
+	date: string;
 }

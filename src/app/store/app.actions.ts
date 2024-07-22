@@ -6,7 +6,7 @@ export class Login {
 	constructor(public userInformation: UserInformation) { }
 }
 
-export class RateMovie {
+export class UpdateMovie {
 	static readonly type = '[APP] Rate Movie';
-	constructor(public newRate: number, public selectedMovie: Movie) { }
+	constructor(public selectedMovie: Movie, public newRate: number, public newDescription?: string) { }
 }

@@ -1,5 +1,5 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { Login, RateMovie } from './app.actions';
+import { Login, UpdateMovie } from './app.actions';
 
 import { Injectable } from '@angular/core';
 import { Movie } from '../shared/models/movie.model';
@@ -40,15 +40,16 @@ export class AppState {
 		});
 	}
 
-	@Action(RateMovie)
-	rateMovie(context: StateContext<AppStateModel>, action: RateMovie): void {
+	@Action(UpdateMovie)
+	updateMovie(context: StateContext<AppStateModel>, action: UpdateMovie): void {
 		const movies = context.getState().movies;
 
 		const updatedMovies = movies.map((movie) => {
 			if (movie.id === action.selectedMovie.id) {
 				return {
 					...movie,
-					rate: action.newRate
+					rate: action.newRate,
+					description: action?.newDescription || movie.description
 				};
 			}
 
