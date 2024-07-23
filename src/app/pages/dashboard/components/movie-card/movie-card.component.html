@@ -13,8 +13,8 @@
 				<span>Rate</span>
 
 				<div class="stars">
-					<ion-icon name="star" *ngFor="let rate of [1,2,3,4,5]"
-						[ngStyle]="{'color': getColor(rate, movie.rate)}" (click)="rateMovie(rate, movie)" />
+					<ion-icon name="star" *ngFor="let rate of [1,2,3,4,5]" [ngStyle]="{'color': getColor(rate, movie.rate)}"
+						(click)="rateMovie(rate, movie)" />
 				</div>
 			</div>
 		</div>
@@ -22,5 +22,6 @@
 
 	<ion-item-options>
 		<ion-item-option color="success" expandable (click)="editMovie(movie.id)">Edit</ion-item-option>
+		<ion-item-option color="danger" expandable (click)="openConfirmationAlert(movie.id)">Delete</ion-item-option>
 	</ion-item-options>
 </ion-item-sliding>

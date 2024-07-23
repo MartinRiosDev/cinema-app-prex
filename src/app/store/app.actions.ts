@@ -7,6 +7,11 @@ export class Login {
 }
 
 export class UpdateMovie {
-	static readonly type = '[APP] Rate Movie';
+	static readonly type = '[APP] Update Movie';
 	constructor(public selectedMovie: Movie, public newRate: number, public newDescription?: string) { }
+}
+
+export class DeleteMovie {
+	static readonly type = '[App] Delete Movie';
+	constructor(public movieId: number) { }
 }

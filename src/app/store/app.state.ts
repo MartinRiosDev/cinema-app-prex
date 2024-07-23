@@ -1,5 +1,5 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { Login, UpdateMovie } from './app.actions';
+import { DeleteMovie, Login, UpdateMovie } from './app.actions';
 
 import { Injectable } from '@angular/core';
 import { Movie } from '../shared/models/movie.model';
@@ -58,6 +58,16 @@ export class AppState {
 
 		context.patchState({
 			movies: updatedMovies
+		});
+	}
+
+	@Action(DeleteMovie)
+	deleteMovie(context: StateContext<AppStateModel>, action: DeleteMovie): void {
+		const movies = context.getState().movies;
+		const filteredMovies = movies.filter((movie) => movie.id !== action.movieId);
+
+		context.patchState({
+			movies: filteredMovies
 		});
 	}
 }
