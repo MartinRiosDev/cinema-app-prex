@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { clearFormStatus, regEx } from 'src/app/shared/constants';
 
 import { IAbstractControl } from 'src/app/shared/models/abstract-control.model';
 import { LoadingService } from 'src/app/shared/services/loading.service';
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/shared/services/toast.service';
-import { regEx } from 'src/app/shared/constants';
 
 @Component({
 	selector: 'app-create-account',
@@ -39,6 +39,10 @@ export class CreateAccountPage implements OnInit {
 
 	ngOnInit(): void {
 		this.initForm();
+	}
+
+	ionViewWillEnter(): void {
+		clearFormStatus(this.form);
 	}
 
 	initForm(): void {

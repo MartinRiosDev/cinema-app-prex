@@ -1,9 +1,7 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DeleteMovie, UpdateMovie } from 'src/app/store/app.actions';
-import { Observable, Subscription } from 'rxjs';
 
 import { AlertController } from '@ionic/angular';
-import { AppState } from 'src/app/store/app.state';
 import { LoadingService } from 'src/app/shared/services/loading.service';
 import { Movie } from 'src/app/shared/models/movie.model';
 import { Router } from '@angular/router';
@@ -15,13 +13,9 @@ import { ToastService } from 'src/app/shared/services/toast.service';
 	templateUrl: './movie-card.component.html',
 	styleUrls: ['./movie-card.component.scss'],
 })
-export class MovieCardComponent implements OnInit, OnDestroy {
+export class MovieCardComponent {
 
-	movies$: Observable<Movie[]> = inject(Store).select(AppState.movies);
-
-	@Input() movies: Movie[];
-
-	subscription: Subscription = new Subscription();
+	@Input() movie: Movie;
 
 	constructor(
 		private store: Store,
@@ -30,14 +24,6 @@ export class MovieCardComponent implements OnInit, OnDestroy {
 		private toastService: ToastService,
 		private alertController: AlertController
 	) { }
-
-	ngOnInit(): void {
-		this.subscription.add(
-			this.movies$.subscribe((movies) => {
-				this.movies = movies;
-			})
-		);
-	}
 
 	getColor(index: number, movieRate: number): string {
 		return index > movieRate ? '#E0E0E0' : '#FFCA28'
@@ -83,9 +69,5 @@ export class MovieCardComponent implements OnInit, OnDestroy {
 				this.toastService.showToast('Movie deleted successfully!', 'success-toast');
 			});
 		}, 3000);
-	}
-
-	ngOnDestroy(): void {
-		this.subscription.unsubscribe();
 	}
 }

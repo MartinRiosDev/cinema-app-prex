@@ -1,3 +1,4 @@
+import { FormGroup } from "@angular/forms";
 import { Movie } from "./models/movie.model";
 
 export const defaultMovies: Movie[] = [
@@ -46,3 +47,9 @@ export const defaultMovies: Movie[] = [
 export const regEx = {
 	email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:\s*)$/
 };
+
+export const clearFormStatus = (form: FormGroup) => {
+	Object.keys(form.controls).forEach(key => {
+		form.get(key).markAsPristine();
+	});
+}

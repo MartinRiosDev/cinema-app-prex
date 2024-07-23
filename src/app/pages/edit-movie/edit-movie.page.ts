@@ -27,8 +27,12 @@ export class EditMoviePage implements OnInit {
 	) { }
 
 	ngOnInit(): void {
+		this.getSelectedMovie();
+	}
+
+	getSelectedMovie(): void {
 		const selectedMovieId: number = Number(this.activatedRoute.snapshot.params['id']);
-		this.selectedMovie = (this.store.snapshot().appState.movies as Movie[]).find(movie => movie.id === selectedMovieId);
+		this.selectedMovie = { ...(this.store.snapshot().appState.movies as Movie[]).find(movie => movie.id === selectedMovieId) };
 		this.movieDescription = this.selectedMovie.description;
 	}
 
@@ -37,10 +41,7 @@ export class EditMoviePage implements OnInit {
 	}
 
 	rateMovie(rate: number): void {
-		this.selectedMovie = {
-			...this.selectedMovie,
-			rate
-		};
+		this.selectedMovie.rate = rate;
 	}
 
 	updateMovie(): void {

@@ -10,7 +10,7 @@ Este proyecto es una aplicación desarrollada con Ionic y Angular que permite mo
 
 ## Instrucciones de Instalación y Ejecución
 
-1. **Instalación de paquetes**: Ejecutar el siguiente comando para instalar todos los paquetes necesarios:
+1. **Instalación de paquetes**: Ejecutar el siguiente comando para instalar todos los paquetes necesarios (Es necesaria la versión 18 o más de node para la correcta instalación y funcionamiento de la app):
     ```bash
     npm i
     ```
@@ -19,11 +19,12 @@ Este proyecto es una aplicación desarrollada con Ionic y Angular que permite mo
     ionic serve
     ```
     o
+
     ```bash
     npm run start
     ```
-3. **Visualización en dispositivo móvil**: Se sugiere utilizar la extensión "Mobile Simulator" de Google Chrome para ver la app de forma más cómoda. También se puede utilizar la herramienta de visualización responsive del navegador.
-4. **Puerto del localhost**: El proyecto se levantará en el puerto 8100 si usas `ionic serve`, o en el puerto 4200 si usas `npm run start`.
+3. **Visualización en dispositivo móvil**: Se sugiere utilizar la extensión "Mobile Simulator" de Google Chrome para ver la app de forma más cómoda. También se puede utilizar la herramienta de visualización responsive por defecto del navegador.
+4. **Puerto del localhost**: El proyecto se levantará en el puerto 8100 si se usa `ionic serve`, o en el puerto 4200 si se usa `npm run start`.
 
 ## Funcionalidades de la Aplicación
 
@@ -58,4 +59,4 @@ En esta vista podrás ver en detalle el título, imagen, puntuación, descripci�
 
 ---
 
-Esto es todo. Muchas Gracias!
+Muchas gracias!

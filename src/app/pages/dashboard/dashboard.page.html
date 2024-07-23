@@ -12,6 +12,6 @@
 
 <ion-content [fullscreen]="true">
 	<div class="main-container">
-		<app-movie-card [movies]="movies" />
+		<app-movie-card *ngFor="let movie of movies" [movie]="movie" />
 	</div>
 </ion-content>

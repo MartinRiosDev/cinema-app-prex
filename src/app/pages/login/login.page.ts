@@ -7,6 +7,7 @@ import { Login } from 'src/app/store/app.actions';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { ToastService } from 'src/app/shared/services/toast.service';
+import { clearFormStatus } from 'src/app/shared/constants';
 import { finalize } from 'rxjs';
 
 @Component({
@@ -30,6 +31,10 @@ export class LoginPage implements OnInit {
 
 	ngOnInit(): void {
 		this.initForm();
+	}
+
+	ionViewWillEnter(): void {
+		clearFormStatus(this.form);
 	}
 
 	initForm(): void {

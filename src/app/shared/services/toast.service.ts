@@ -10,8 +10,8 @@ export class ToastService {
 		private toastController: ToastController
 	) { }
 
-	async showToast(message: string, customClass?: string) {
-		const toast = await this.toastController.create({
+	showToast(message: string, customClass?: string) {
+		this.toastController.create({
 			message: message,
 			duration: 2000,
 			position: 'bottom',
@@ -22,8 +22,6 @@ export class ToastService {
 				}
 			],
 			cssClass: customClass
-		});
-
-		await toast.present();
+		}).then((toast) => toast.present());
 	}
 }

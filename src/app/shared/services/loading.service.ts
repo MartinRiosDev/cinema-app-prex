@@ -10,12 +10,10 @@ export class LoadingService {
 		private loadingController: LoadingController
 	) { }
 
-	async showLoading(message?: string) {
-		const loading = await this.loadingController.create({
+	showLoading(message?: string) {
+		this.loadingController.create({
 			message: message || 'Loading...'
-		});
-
-		loading.present();
+		}).then((loading) => loading.present())
 	}
 
 	hideLoading(): void {
